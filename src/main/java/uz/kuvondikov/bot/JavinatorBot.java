@@ -26,18 +26,18 @@ public class JavinatorBot extends AbilityBot {
         responseHandler = new ResponseHandler(silent, db);
     }
 
-    public Ability startBot() {
-        return Ability
-                .builder()
-                .name("start")
-                .locality(USER)
-                .privacy(PUBLIC)
-                .action(ctx -> responseHandler.replyToStart(ctx.chatId()))
-                .build();
-    }
+//    public Ability startBot() {
+//        return Ability
+//                .builder()
+//                .name("start")
+//                .locality(USER)
+//                .privacy(PUBLIC)
+//                .action(ctx -> responseHandler.replyToStart(ctx.chatId()))
+//                .build();
+//    }
 
     public Reply replyToButtons() {
-        BiConsumer<BaseAbilityBot, Update> action = (abilityBot, upd) -> responseHandler.replyToButtons(getChatId(upd), upd.getMessage());
+        BiConsumer<BaseAbilityBot, Update> action = (abilityBot, upd) -> responseHandler.sendMessage(getChatId(upd),"hellooo");
         return Reply.of(action, Flag.TEXT, upd -> responseHandler.userIsActive(getChatId(upd)));
     }
 

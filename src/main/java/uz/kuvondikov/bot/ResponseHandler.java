@@ -30,6 +30,13 @@ public class ResponseHandler {
         chatStates.put(chatId, AWAITING_NAME);
     }
 
+    public void sendMessage(long chatId,String msg){
+        SendMessage message = new SendMessage();
+        message.setChatId(chatId);
+        message.setText(msg);
+        sender.execute(message);
+    }
+
     public void replyToButtons(long chatId, Message message) {
         if (message.getText().equalsIgnoreCase("/stop")) {
             stopChat(chatId);
